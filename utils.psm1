@@ -3,7 +3,9 @@ $Magick = "D:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"
 
 function MigrateFile {
     param(
-        [System.IO.FileSystemInfo] $file
+        [System.IO.FileSystemInfo] $file,
+        [string] $sgsResourceFolder,
+        [string] $output
     )
     $destinationPath = Join-Path -Path $output -ChildPath $file.FullName.Substring($file.FullName.IndexOf($sgsResourceFolder) + $sgsResourceFolder.Length)
     if (-not (Test-Path -Path $destinationPath)) {

@@ -1,7 +1,7 @@
 ﻿Import-Module ".\utils.psm1"
 
-$sgsResourceFolder = "F:\sgs\sgs416\"
-$output = "F:\sgs\sgs416-output\"
+$sgsResourceFolder = "F:\sgs\sgs421\"
+$output = "F:\sgs\sgs421-output\"
 $migrateFiles = @("*.jpg", "*.png", "*.pvr.ccz", "*.pvr.ccz", "*.pvr.ccz@alpha", "*.skel", "*.atlas", "*.atlas", "*.ttf", "*.fnt", "*.mp3", "*.zip")
 
 #start
@@ -12,7 +12,7 @@ if (-not (Test-Path -Path $output -PathType Container)) {
 }
 
 Get-ChildItem -Path $sgsResourceFolder -File -Recurse -Include $migrateFiles | ForEach-Object {
-    MigrateFile -file $_
+    MigrateFile -file $_ -sgsResourceFolder $sgsResourceFolder -output $output
 }
 
 Get-ChildItem -Path $output -File -Recurse -Filter "*.jpg" | ForEach-Object {
